@@ -30,7 +30,7 @@ public class EnemyCheck : MonoBehaviour
             {
                 EnemyList.RemoveAt(i);
             }
-            if (!EnemyList[i].activeSelf)
+            if (EnemyList[i].activeSelf)
             {
                 //check = true;
                 //break;
