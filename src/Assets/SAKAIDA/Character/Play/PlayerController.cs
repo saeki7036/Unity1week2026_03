@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
@@ -15,10 +16,15 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float DefaltSpeed = 3;
     [SerializeField] float ChargeSpeed = 1.5f;
+    [SerializeField] int DefaltAddLevel = 1;
+    [SerializeField] int ChargeAddLevel = 2;
     [SerializeField] int HP;
     [SerializeField] int MAXHP;
 
     [SerializeField] float ChargeCoumt = 0;
+
+    [SerializeField] float AttackDestroyTime = 0.1f;
+    [SerializeField] GameObject AttackArea;
 
     [SerializeField]bool pressing;
 
@@ -63,19 +69,20 @@ public class PlayerController : MonoBehaviour
             MoveInputSave = MoveInput;
 
         }
+        
     }
     public void OnAttack(InputAction.CallbackContext context)
     {
+        movetype = MoveType.Attack;
         if (context.phase == InputActionPhase.Started)
         {
             pressing = true;
         }
-
         if (context.phase == InputActionPhase.Canceled)
         {
             pressing = false;
-
         }
+        CursorDirection = CursorMathf();
     }
     void Awake()
     {
@@ -147,7 +154,15 @@ public class PlayerController : MonoBehaviour
     void isAttack() 
     {
 
-        
+        GameObject CL_AttackArea = Instantiate(AttackArea,transform.position,Quaternion.identity);
+        PlayerAttack playerAttack = CL_AttackArea.GetComponent<PlayerAttack>();
+        CL_AttackArea.transform.up = CursorDirection;
+        playerAttack.Direction = CursorDirection;
+        playerAttack.AddLevel = DefaltAddLevel;
+
+        Destroy(CL_AttackArea, AttackDestroyTime);
+
+        movetype = MoveType.Nomal;
 
     }
 
