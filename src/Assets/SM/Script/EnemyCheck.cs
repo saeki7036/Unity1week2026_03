@@ -5,45 +5,82 @@ using UnityEngine.Events;
 
 public class EnemyCheck : MonoBehaviour
 {
-    [SerializeField] List<GameObject> EnemyList;
+    [SerializeField] List<EnemyBase> EnemyList;
 
     [SerializeField] UnityEvent ClearEvent;
 
+    [SerializeField] int MaxActCount = 4;
+
     [SerializeField] bool checkFlag = true;
+
+    public int EnemyCrrentCount;
+    int ActCrrentCount;
 
     public void CheckStart()
     {
         checkFlag = false;
     }
-    
+
+    private void Start()
+    {
+        EnemyCrrentCount = EnemyList.Count;
+        ActCrrentCount = 0;
+    }
+
     // Update is called once per frame
     void Update()
     {
         if(checkFlag)
             return;
 
-        //bool check = false;
+        bool check = false;
 
-        for (int i = EnemyList.Count - 1; i >= 0; i--)
+        for (int i = 0; i < EnemyList.Count; i++)
         {
             if (EnemyList[i] == null)
             {
-                EnemyList.RemoveAt(i);
-            }
-            if (EnemyList[i].activeSelf)
-            {
-                //check = true;
-                //break;
-                return;
-            }
-            else
-            {
                 continue;
+            }
+
+            switch (EnemyList[i].eStatus)
+            {
+                case enemyStatus.Stay:
+                    {
+                        if (ActCrrentCount < MaxActCount)
+                        {
+                            EnemyList[i].EnemySpwan();
+                            EnemyList[i].SetStatus(enemyStatus.Act);
+                            ActCrrentCount++;
+                        }
+                        check = true;
+                    }
+                    break;
+                case enemyStatus.Act:
+                    {
+                        check = true;
+                    }
+                    break;
+                case enemyStatus.Stop:
+                    {
+                        EnemyList[i].EnemyDeath();
+                        EnemyList[i].SetStatus(enemyStatus.Death);
+                        EnemyCrrentCount--;
+                        ActCrrentCount--;
+                    }
+                    break;
             }
         }
 
-        ClearEvent.Invoke();
+        //Debug.Log(check+ "" + EnemyCrrentCount +""+ ActCrrentCount);
+        if (check || EnemyCrrentCount != 0 || ActCrrentCount != 0)
+        {
+            return;
+        }
+        else
+        {
+            ClearEvent.Invoke();
 
-        checkFlag = true;
+            checkFlag = true;
+        } 
     }
 }

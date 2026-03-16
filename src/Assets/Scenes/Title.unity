@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TitleSceneName: Title
-  MainGaneSceneName: MainGame
+  MainGaneSceneName: Stage_T
   waitTime: 0.3
 --- !u!4 &73234172
 Transform:
