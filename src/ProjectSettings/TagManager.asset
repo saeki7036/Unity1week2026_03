@@ -16,8 +16,8 @@ TagManager:
   - Wall
   - Enemy
   - Shell
-  - 
-  - 
+  - Attack
+  - PlayerHit
   - 
   - 
   - 
