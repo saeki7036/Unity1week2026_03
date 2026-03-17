@@ -748,7 +748,7 @@ GameObject:
   - component: {fileID: 438405332}
   m_Layer: 6
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1243,7 +1243,7 @@ GameObject:
   - component: {fileID: 523735161}
   m_Layer: 6
   m_Name: Wall (4)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2559,7 +2559,7 @@ GameObject:
   - component: {fileID: 968231860}
   m_Layer: 6
   m_Name: Wall (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2689,7 +2689,7 @@ GameObject:
   - component: {fileID: 978285963}
   m_Layer: 6
   m_Name: Wall (7)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3127,7 +3127,7 @@ GameObject:
   - component: {fileID: 1319150443}
   m_Layer: 6
   m_Name: Wall (5)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3273,7 +3273,7 @@ GameObject:
   - component: {fileID: 1331459188}
   m_Layer: 6
   m_Name: Wall (6)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4608,7 +4608,7 @@ GameObject:
   - component: {fileID: 1578456368}
   m_Layer: 6
   m_Name: Wall (3)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5052,7 +5052,7 @@ GameObject:
   - component: {fileID: 1925602661}
   m_Layer: 6
   m_Name: Wall (2)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5555,6 +5555,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2145768600224281278, guid: dbea74d39546ae04c85361c93c4d484e, type: 3}
+      propertyPath: eStatus
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7007274143439740004, guid: dbea74d39546ae04c85361c93c4d484e, type: 3}
       propertyPath: m_Name
       value: Enemy_S
@@ -5623,13 +5627,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3428231346303598213, guid: a0715992b57c2774e85d17fbc6ea9caa, type: 3}
-      propertyPath: bulletLarge
-      value: 
-      objectReference: {fileID: 4269477159804290340, guid: 6ed4bce1936fbb549ba6a344b30c67a0, type: 3}
     - target: {fileID: 4384923347023482424, guid: a0715992b57c2774e85d17fbc6ea9caa, type: 3}
       propertyPath: m_Name
       value: Enemy_L
+      objectReference: {fileID: 0}
+    - target: {fileID: 4384923347023482424, guid: a0715992b57c2774e85d17fbc6ea9caa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

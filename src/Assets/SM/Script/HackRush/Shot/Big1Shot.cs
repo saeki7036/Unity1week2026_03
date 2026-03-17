@@ -28,6 +28,11 @@ public class Big1Shot : ShotPatarnBase
         //オブジェクト生成
         GameObject bullet = Instantiate(bulletPrehab, SpawnPos + ToDistance * dirTarget, Quaternion.identity);
 
+        ShellController shell = bullet.GetComponent<ShellController>();
+
+        shell.Shot(3, dirTarget.normalized);
+
+        return;
         //Rigidbody2D取得
         Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
 
