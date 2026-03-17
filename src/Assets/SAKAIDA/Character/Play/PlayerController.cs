@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
 
     public void SetNoAction ()=> movetype = MoveType.NoAction;
 
+    public Transform GetTransform => this.transform;
     public void OnMove(InputAction.CallbackContext context)
     {
         //Debug.Log("遘ｻ蜍輔＠縺");

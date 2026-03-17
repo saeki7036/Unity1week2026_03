@@ -15,6 +15,10 @@ public class EnemyBase : MonoBehaviour
 {
     [SerializeField] int hp = 7;
 
+    [SerializeField] float ActTimeSpawn = 3f;
+
+    float ActTimeCount;
+
     static readonly string ShellTag = "Shell";
 
     public enemyStatus eStatus = enemyStatus.Stay;
@@ -32,11 +36,29 @@ public class EnemyBase : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        Act();
+        //一定範囲内(画面内)の時に加算
+        if (eStatus == enemyStatus.Act)
+            ActTimeCount += Time.fixedDeltaTime;
+        else
+            return;
+
+        if(ActTimeCount >= ActTimeSpawn)
+        {
+            ActTimeCount = 0;
+
+            //派生先の処理
+            EnemyUpDate();
+        }
     }
 
+    protected virtual void EnemyUpDate()
+    {
+        return;//基底クラス
+    }
+
+    
     protected virtual void Act()
     {
         if (hp <= 0)

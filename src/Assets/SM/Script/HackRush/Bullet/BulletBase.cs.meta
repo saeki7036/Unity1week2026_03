@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: eac174be552a2f8498bbf6929b64c5d6
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - rb2D: {instanceID: 0}
+  - BulletDieEffect: {fileID: 3919228783090798567, guid: f5988be2ae7cc584e9e140e76c2392c9, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
