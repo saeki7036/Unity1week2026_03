@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.AnimatedValues;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject ChargeShotEffect;
     [SerializeField] GameObject ChargeEffect;
     [SerializeField] GameObject ChargeMaxEffect;
+    [SerializeField] GameObject Animbody;
     float chargeCount = 0;
     [SerializeField] int HP;
     [SerializeField] int MAXHP;
@@ -101,7 +103,9 @@ public class PlayerController : MonoBehaviour
             movetype = MoveType.Attack;
             pressing = false;
         }
-        CursorDirection = CursorMathf();
+
+        animator.SetBool("AttackWait", pressing);
+        
     }
     void Awake()
     {
@@ -155,7 +159,42 @@ public class PlayerController : MonoBehaviour
     }
     public void isMove(float value)
     {        
-        rb.velocity = MoveInput.normalized * culcarateSpeed(pressing);           
+        rb.velocity = MoveInput.normalized * culcarateSpeed(pressing);
+        animator.SetBool("Attack", false);
+
+        if (pressing)
+        {
+            if (CursorDirection.x >= 0.3)
+            {
+                Animbody.transform.localScale = new Vector3(-1, 1, 1);
+            }
+            else if (CursorDirection.x <= -0.3)
+            {
+                Animbody.transform.localScale = new Vector3(1, 1, 1);
+            }
+            CursorDirection = CursorMathf();
+        }
+        else 
+        { 
+            if (MoveInput.x >= 0.3)
+            {
+                Animbody.transform.localScale = new Vector3(-1,1,1);
+            }
+            else if (MoveInput.x <= -0.3) 
+            {
+                Animbody.transform.localScale = new Vector3(1, 1, 1);
+            }
+        }
+        
+        if (MoveInput == Vector2.zero) 
+        {
+            animator.SetInteger("Anim", 0);
+        }
+        else 
+        {
+            animator.SetInteger("Anim", 1);
+        }
+        
     }
     float culcarateSpeed(bool press) 
     {
@@ -166,9 +205,15 @@ public class PlayerController : MonoBehaviour
             ChargeCoumt += Time.fixedDeltaTime;
            
             ChargeEffect.SetActive(true);
-            if (ChargeCoumt > ChargeTime) { 
+            if (ChargeCoumt > ChargeTime)
+            {
                 ChargeMaxEffect.SetActive(true);
                 Camera.Shake(0.1f, 0.04f);
+                animator.SetBool("Charge", true);
+            }
+            else 
+            {
+                animator.SetBool("Charge", false);
             }
         }
         else 
@@ -177,13 +222,14 @@ public class PlayerController : MonoBehaviour
             ChargeCoumt = 0;
             ChargeEffect.SetActive(false);
             ChargeMaxEffect.SetActive(false);
+            animator.SetBool("Charge", false);
         }
         return speed;
     }
     void isAttack() 
     {
 
-        
+        animator.SetBool("Attack", true);
         GameObject CL_AttackArea = Instantiate(AttackArea,transform.position,Quaternion.identity);
         PlayerAttack playerAttack = CL_AttackArea.GetComponent<PlayerAttack>();
         CL_AttackArea.transform.up = CursorDirection;
@@ -192,11 +238,12 @@ public class PlayerController : MonoBehaviour
         if (ChargeCoumt > ChargeTime)
         {
             playerAttack.AddLevel = ChargeAddLevel;
-            playerAttack.transform.localScale = playerAttack.transform.localScale * 1.5f;
+            playerAttack.transform.localScale = playerAttack.transform.localScale * 2;
             
         }
         else 
-        { 
+        {
+            
             playerAttack.AddLevel = DefaltAddLevel;
         }
         
