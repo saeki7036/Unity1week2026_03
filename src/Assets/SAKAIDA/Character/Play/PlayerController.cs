@@ -66,6 +66,8 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    public void SetNoAction ()=> movetype = MoveType.NoAction;
+
     public void OnMove(InputAction.CallbackContext context)
     {
         //Debug.Log("遘ｻ蜍輔＠縺");
@@ -85,7 +87,9 @@ public class PlayerController : MonoBehaviour
     }
     public void OnAttack(InputAction.CallbackContext context)
     {
-        
+        if (movetype == MoveType.NoAction)
+            return;
+
         if (context.phase == InputActionPhase.Started)
         {
             pressing = true;
@@ -213,11 +217,16 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamege()
     {
-        if(HP == 0)
+        if(HP <= 0)
             return;
+
         HP = Mathf.Max(HP -1,0);
-        if(HP == 0)
+
+        if(HP <= 0)
+        {
+            movetype = MoveType.NoAction;
             gameover.Invoke();
+        }
     }
     
     public IEnumerator SlowMotion(float duration, float scale)

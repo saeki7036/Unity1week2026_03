@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +10,7 @@ public class ShellController : MonoBehaviour
     public int Level = 0;
 
     public float DefaltSpeed = 1;
-    //‚PƒŒƒxƒ‹‚²‚Æ‚ÌUŒ‚”{—¦
+    //ï¼‘ãƒ¬ãƒ™ãƒ«ã”ã¨ã®æ”»æ’ƒå€çŽ‡
     public float UP_SPEED_DOUBLE = 0.5f;
     public float CulcarateSpeed = 0;
 
@@ -34,6 +34,8 @@ public class ShellController : MonoBehaviour
 
         rb.velocity = direction * CulcarateSpeed;
     }
+
+    public void Stop ()=> rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
     private void OnCollisionEnter2D(Collision2D other)
     {

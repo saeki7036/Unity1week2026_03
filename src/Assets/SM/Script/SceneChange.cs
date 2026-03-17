@@ -87,7 +87,7 @@ public class SceneChanger : MonoBehaviour
     {
         if (IsChange) return;
 
-        if (Time.timeScale == 0)
+        if (Time.timeScale != 1)
             SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
         else
             StartCoroutine(WaitForSecondCoroutine(waitTime, SceneManager.GetActiveScene().name));
@@ -100,7 +100,7 @@ public class SceneChanger : MonoBehaviour
     {
         if (IsChange) return;
 
-        if (Time.timeScale == 0)
+        if (Time.timeScale != 1)
             SceneManager.LoadSceneAsync(TitleSceneName);
         else
             StartCoroutine(WaitForSecondCoroutine(waitTime, TitleSceneName));
@@ -113,7 +113,7 @@ public class SceneChanger : MonoBehaviour
     {
         if (IsChange) return;
 
-        if (Time.timeScale == 0)
+        if (Time.timeScale != 1)
             SceneManager.LoadSceneAsync(MainGaneSceneName);
         else
             StartCoroutine(WaitForSecondCoroutine(waitTime, MainGaneSceneName));
