@@ -8,9 +8,12 @@ public class StopShell : MonoBehaviour
     
     public void StopShells()
     {
-        foreach (var item in controllers)
+        GameObject[] shells = GameObject.FindGameObjectsWithTag("Shell");
+
+        foreach (var shell in shells)
         {
-            item.Stop();
+            if(shell.TryGetComponent<ShellController>(out var con))
+                con.Stop();
         }
     }
 }
