@@ -18,6 +18,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float ChargeSpeed = 1.5f;
     [SerializeField] int DefaltAddLevel = 1;
     [SerializeField] int ChargeAddLevel = 2;
+    [SerializeField] float ChargeTime = 1;
+    [SerializeField] GameObject ChargeEffect;
+    [SerializeField] GameObject ChargeMaxEffect;
+    float chargeCount = 0;
     [SerializeField] int HP;
     [SerializeField] int MAXHP;
 
@@ -29,6 +33,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject AttackArea;
 
     [SerializeField]bool pressing;
+
+    Camera_Controller Camera =>Camera_Controller.instance;
 
     public Vector2 CursorDirection = Vector2.zero;
     public float CursorDistance = 0;
@@ -79,6 +85,8 @@ public class PlayerController : MonoBehaviour
         if (context.phase == InputActionPhase.Started)
         {
             pressing = true;
+            
+            
         }
         if (context.phase == InputActionPhase.Canceled)
         {
@@ -147,24 +155,43 @@ public class PlayerController : MonoBehaviour
         if (press)
         {
             speed = ChargeSpeed;
+            ChargeCoumt += Time.fixedDeltaTime;
+            if (ChargeCoumt > ChargeTime/2) Camera.Shake(0.1f,0.04f);
+            ChargeEffect.SetActive(true);
+            if (ChargeCoumt > ChargeTime) ChargeMaxEffect.SetActive(true);
         }
         else 
         { 
             speed = DefaltSpeed;
+            ChargeCoumt = 0;
+            ChargeEffect.SetActive(false);
+            ChargeMaxEffect.SetActive(false);
         }
         return speed;
     }
     void isAttack() 
     {
 
+        
         GameObject CL_AttackArea = Instantiate(AttackArea,transform.position,Quaternion.identity);
         PlayerAttack playerAttack = CL_AttackArea.GetComponent<PlayerAttack>();
         CL_AttackArea.transform.up = CursorDirection;
         playerAttack.Direction = CursorDirection;
-        playerAttack.AddLevel = DefaltAddLevel;
+        playerAttack.player = this;
+        if (ChargeCoumt > ChargeTime)
+        {
+            playerAttack.AddLevel = ChargeAddLevel;
+            playerAttack.transform.localScale = playerAttack.transform.localScale * 1.5f;
+            
+        }
+        else 
+        { 
+            playerAttack.AddLevel = DefaltAddLevel;
+        }
+        
 
         CL_AttackArea.transform.position =
-     transform.position + (Vector3)CursorDirection * AttackFowerd;
+        transform.position + (Vector3)CursorDirection * AttackFowerd;
 
         AudioManager.instance.PlaySE(audioClips[0]);
         Destroy(CL_AttackArea, AttackDestroyTime);
@@ -178,5 +205,16 @@ public class PlayerController : MonoBehaviour
         Vector2 cursordirection = cursorController.MousePos - transform.position;
         return cursordirection.normalized;
 
+    }
+    public IEnumerator SlowMotion(float duration, float scale)
+    {
+        float originalTimeScale = Time.timeScale;
+
+        Time.timeScale = scale;
+
+        // リアル時間で待つ（←ここ重要）
+        yield return new WaitForSecondsRealtime(duration);
+
+        Time.timeScale = 1;
     }
 }
