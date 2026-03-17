@@ -13,7 +13,7 @@ public class ShellController : MonoBehaviour
     //ÇPÉåÉxÉãÇ≤Ç∆ÇÃçUåÇî{ó¶
     public float UP_SPEED_DOUBLE = 0.5f;
     public float CulcarateSpeed = 0;
-
+    [SerializeField] ParticleSystem HeighLevelEffect;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] int MAX_LEVEL = 5;
 
@@ -39,11 +39,29 @@ public class ShellController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Wall")) 
         {
-            if (Level <= MAX_LEVEL) return; 
+            if (Level <= MAX_LEVEL)
+            {
+                if (Level > 0) 
+                {
+                    Level--; 
+                }
+            }
+            else
+            {
                 Level = MAX_LEVEL;
-            CulcarateSpeed = DefaltSpeed * (1 + Level * UP_SPEED_DOUBLE);
-            CulcarateAttack = DefaltAttack * Level;
-            rb.velocity = rb.velocity.normalized * CulcarateSpeed;
+                
+            }
         }
+        if (Level > 10)
+        {
+            HeighLevelEffect.emissionRate = 100;
+        }
+        else 
+        {
+            HeighLevelEffect.emissionRate = 0;
+        }
+        CulcarateSpeed = DefaltSpeed * (1 + Level * UP_SPEED_DOUBLE);
+        CulcarateAttack = DefaltAttack * Level;
+        rb.velocity = rb.velocity.normalized * CulcarateSpeed;
     }
 }

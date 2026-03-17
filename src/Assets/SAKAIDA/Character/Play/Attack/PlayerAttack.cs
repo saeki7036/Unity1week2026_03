@@ -19,7 +19,7 @@ public class PlayerAttack : MonoBehaviour
         if (AddLevel > 2) 
         {
             clip = clips[1];
-            StartCoroutine(player.SlowMotion(0.15f, 0.3f));
+            player.StartSlow(0.15f, 0.3f);
             Camera_Controller.instance.Shake(0.2f, 0.2f);
         }
         shell.Shot(AddLevel,Direction);

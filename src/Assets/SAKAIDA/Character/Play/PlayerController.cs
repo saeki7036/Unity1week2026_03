@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
 
+    Coroutine slowCoroutine;
+
+
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Animator animator;
 
@@ -20,6 +23,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int DefaltAddLevel = 1;
     [SerializeField] int ChargeAddLevel = 2;
     [SerializeField] float ChargeTime = 1;
+    [SerializeField] GameObject ChargeShotEffect;
     [SerializeField] GameObject ChargeEffect;
     [SerializeField] GameObject ChargeMaxEffect;
     float chargeCount = 0;
@@ -160,9 +164,12 @@ public class PlayerController : MonoBehaviour
         {
             speed = ChargeSpeed;
             ChargeCoumt += Time.fixedDeltaTime;
-            if (ChargeCoumt > ChargeTime/2) Camera.Shake(0.1f,0.04f);
+           
             ChargeEffect.SetActive(true);
-            if (ChargeCoumt > ChargeTime) ChargeMaxEffect.SetActive(true);
+            if (ChargeCoumt > ChargeTime) { 
+                ChargeMaxEffect.SetActive(true);
+                Camera.Shake(0.1f, 0.04f);
+            }
         }
         else 
         { 
@@ -219,7 +226,23 @@ public class PlayerController : MonoBehaviour
         if(HP == 0)
             gameover.Invoke();
     }
-    
+    public void StartSlow(float duration, float scale)
+    {
+        if (slowCoroutine != null)
+        {
+            StopCoroutine(slowCoroutine);
+            StopCoroutine(ChargeShotEffectAnimation(1));
+        }
+        slowCoroutine = StartCoroutine(SlowMotion(duration, scale));
+        StartCoroutine(ChargeShotEffectAnimation(1));
+    }
+    public IEnumerator ChargeShotEffectAnimation(float duration) 
+    {
+        ChargeShotEffect.transform.up = CursorDirection;
+        ChargeShotEffect.SetActive(true);
+        yield return new WaitForSecondsRealtime(duration);
+        ChargeShotEffect.SetActive(false);
+    }
     public IEnumerator SlowMotion(float duration, float scale)
     {
         float originalTimeScale = Time.timeScale;
