@@ -63,7 +63,7 @@ public class EnemyBase : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision);
+        //Debug.Log(collision);
         if (collision.CompareTag(ShellTag))
         {
             if(collision.gameObject.TryGetComponent<ShellController>(out var shell))

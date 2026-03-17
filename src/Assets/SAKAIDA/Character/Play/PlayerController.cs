@@ -1,9 +1,10 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 
@@ -21,6 +22,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int HP;
     [SerializeField] int MAXHP;
 
+    public int GetHP() => HP;
+
     [SerializeField] float ChargeCoumt = 0;
     [SerializeField] List<AudioClip> audioClips = new List<AudioClip>();
 
@@ -29,6 +32,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject AttackArea;
 
     [SerializeField]bool pressing;
+
+    [SerializeField] UnityEvent gameover;
 
     public Vector2 CursorDirection = Vector2.zero;
     public float CursorDistance = 0;
@@ -58,7 +63,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        //Debug.Log("à⁄ìÆÇµÇΩ");
+        //Debug.Log("ÁßªÂãï„Åó„Åü");
         MoveInput = context.ReadValue<Vector2>();
 
         if (MoveInput != Vector2.zero)
@@ -178,5 +183,12 @@ public class PlayerController : MonoBehaviour
         Vector2 cursordirection = cursorController.MousePos - transform.position;
         return cursordirection.normalized;
 
+    }
+
+    public void TakeDamege()
+    {
+        HP--;
+        if(HP == 0)
+        gameover.Invoke();
     }
 }
