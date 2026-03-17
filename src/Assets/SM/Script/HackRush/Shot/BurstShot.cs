@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BurstShot : ShotPatarnBase
@@ -13,6 +14,9 @@ public class BurstShot : ShotPatarnBase
 
     [SerializeField]
     int patarnReportValue = 3;//発射パターンの起動回数
+
+    [SerializeField]
+    float ToDistance = 3f;
 
     //発射処理
     public override void PatarnPlay(Transform enemyTransform)
@@ -46,11 +50,13 @@ public class BurstShot : ShotPatarnBase
         if (enemyTransform == null)
             return;
 
+        Vector2 SpawnPos = enemyTransform.position;
+
         //プレイヤーに飛ばす方向を計算
-        Vector2 dirTarget = target - enemyTransform.position;
+        Vector2 dirTarget = (target - enemyTransform.position).normalized;
 
         //オブジェクト生成
-        GameObject bullet = Instantiate(bulletPrehab, enemyTransform.position, Quaternion.identity);
+        GameObject bullet = Instantiate(bulletPrehab, SpawnPos + ToDistance * dirTarget, Quaternion.identity);
 
         //Rigidbody2D取得
         Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();

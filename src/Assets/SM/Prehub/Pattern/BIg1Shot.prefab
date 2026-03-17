@@ -45,4 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotInterval: 100
-  bulletPrehab: {fileID: 2245274868930637758, guid: 30e375dd6f42e0347a815a8817d145a7, type: 3}
+  bulletPrehab: {fileID: 177135032375817284, guid: 2ae9e8ac3a5f56c4fa5058baf7e01af1, type: 3}
+  ToDistance: 1.5

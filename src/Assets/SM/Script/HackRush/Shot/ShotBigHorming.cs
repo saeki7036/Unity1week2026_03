@@ -20,6 +20,9 @@ public class ShotBigHorming : ShotPatarnBase
     [SerializeField] 
     int patarnReportValue = 5;//発射パターンの起動回数
 
+    [SerializeField]
+    float ToDistance = 3f;
+
     //プレイヤーの方向以外の方向にばら撒くため3～33を指定
     //O～2及び34～36の間はプレイヤーの方向になるため発射させない
     const int MinBackValue = 3,
@@ -42,11 +45,13 @@ public class ShotBigHorming : ShotPatarnBase
     //発射処理(プレイヤーに1方向)
     void MainPatarnPlay(Vector3 target, Transform enemyTransform)
     {
+        Vector2 SpawnPos = enemyTransform.position;
+
         //プレイヤーに飛ばす方向を計算
-        Vector2 dirTarget = target - enemyTransform.position;
+        Vector2 dirTarget = (target - enemyTransform.position).normalized;
 
         //オブジェクト生成
-        GameObject bullet = Instantiate(bulletLarge, enemyTransform.position, Quaternion.identity);
+        GameObject bullet = Instantiate(bulletLarge, SpawnPos + ToDistance * dirTarget, Quaternion.identity);
 
         //Rigidbody2D取得
         Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
@@ -79,14 +84,16 @@ public class ShotBigHorming : ShotPatarnBase
         if (enemyTransform == null)
             return;
 
+        Vector2 SpawnPos = enemyTransform.position;
+
         //プレイヤーの方向以外の方向にばら撒くため3～33を指定
         for (int i = MinBackValue; i <= MaxBackValue; i++)
         {
             //基準となる方向を計算
-            Vector2 dirTarget = target - enemyTransform.position;
+            Vector2 dirTarget = (target - enemyTransform.position).normalized;
 
             //オブジェクト生成
-            GameObject bullet = Instantiate(bulletSmall, enemyTransform.position, Quaternion.identity);
+            GameObject bullet = Instantiate(bulletSmall, SpawnPos + ToDistance * dirTarget, Quaternion.identity);
 
             //Rigidbody2D取得
             Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
@@ -95,7 +102,7 @@ public class ShotBigHorming : ShotPatarnBase
             float angleRadians = (aimValue * i) * Mathf.Deg2Rad;
 
             //発射方向計算
-            Vector2 rotate = Quaternion.Euler(Vector3.forward * angleRadians) * dirTarget.normalized;
+            Vector2 rotate = Quaternion.Euler(Vector3.forward * angleRadians) * dirTarget;
 
             //発射方向代入
             bulletRB.velocity = rotate;

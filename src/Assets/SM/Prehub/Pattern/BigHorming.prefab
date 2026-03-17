@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotInterval: 200
   bulletSmall: {fileID: 177135032375817284, guid: 4499fd024e036c243b4046c8a1091e3c, type: 3}
-  bulletLarge: {fileID: 2245274868930637758, guid: cea7b5e304b33914cbeff1d82cae31f9, type: 3}
+  bulletLarge: {fileID: 4269477159804290340, guid: 6ed4bce1936fbb549ba6a344b30c67a0, type: 3}
   aimValue: 560
-  OtherPlayTimeSpan: 0.2
-  OtherPlayCount: 5
+  patarnReportTimeSpan: 0.2
+  patarnReportValue: 5
