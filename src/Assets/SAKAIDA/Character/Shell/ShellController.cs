@@ -9,6 +9,8 @@ public class ShellController : MonoBehaviour
     public int CulcarateAttack = 0;
     public int Level = 0;
 
+    public bool BrakeShell = false;//壁に接触したら壊れるかを判断
+
     public float DefaltSpeed = 1;
     //１レベルごとの攻撃倍率
     public float UP_SPEED_DOUBLE = 0.5f;
@@ -29,7 +31,7 @@ public class ShellController : MonoBehaviour
     public void Shot(int UP_LEVEL,Vector2 direction) 
     {
         animator.speed = (float)Level / 3;
-        animator.Play("�ړ�");
+        animator.Play("移動");
         
         if (Level <= MAX_LEVEL)
         {
@@ -48,6 +50,7 @@ public class ShellController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Wall")) 
         {
+            if (BrakeShell) Destroy(gameObject);
 
             if (Level <= MAX_LEVEL)
             {
@@ -82,16 +85,16 @@ public class ShellController : MonoBehaviour
     {
         float t = Mathf.InverseLerp(0, MAX_LEVEL, Level);
 
-        // RGB �� HSV
+        // RGB �� HSV
         Color.RGBToHSV(SlowSpeedColor, out float h1, out float s1, out float v1);
         Color.RGBToHSV(HightSpeedColor, out float h2, out float s2, out float v2);
 
-        // HSV�ŕ��
+        // HSV�ŕ��
         float h = Mathf.Lerp(h1, h2, t);
         float s = Mathf.Lerp(s1, s2, t);
         float v = Mathf.Lerp(v1, v2, t);
 
-        // HSV �� RGB
+        // HSV �� RGB
         return Color.HSVToRGB(h, s, v);
     }
 }
