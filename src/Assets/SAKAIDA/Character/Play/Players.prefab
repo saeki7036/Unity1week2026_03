@@ -5240,6 +5240,7 @@ GameObject:
   - component: {fileID: 5899831273290167635}
   - component: {fileID: 7547810695186101941}
   - component: {fileID: 328409942581300021}
+  - component: {fileID: 6245043990563672340}
   m_Layer: 3
   m_Name: PlayerBody
   m_TagString: Untagged
@@ -5286,7 +5287,7 @@ MonoBehaviour:
   ChargeTime: 0.4
   ChargeEffect: {fileID: 7974589881229475702}
   ChargeMaxEffect: {fileID: 4825468587394484770}
-  HP: 0
+  HP: 3
   MAXHP: 3
   ChargeCoumt: 0
   audioClips:
@@ -5296,6 +5297,9 @@ MonoBehaviour:
   AttackFowerd: 1
   AttackArea: {fileID: 7764715632873099402, guid: cd745946185d7a645a133b058565f014, type: 3}
   pressing: 0
+  gameover:
+    m_PersistentCalls:
+      m_Calls: []
   CursorDirection: {x: 0, y: 0}
   CursorDistance: 0
   MoveInput: {x: 0, y: 0}
@@ -5365,6 +5369,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.2
+--- !u!114 &6245043990563672340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7885763872644578172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b473cfcac1f16424da0adcc750534758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 5899831273290167635}
+  hitPointViewer: {fileID: 0}
 --- !u!1 &7974589881229475702
 GameObject:
   m_ObjectHideFlags: 0

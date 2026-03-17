@@ -1,4 +1,4 @@
-�ｿusing System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
@@ -213,9 +213,11 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamege()
     {
-        HP--;
         if(HP == 0)
-        gameover.Invoke();
+            return;
+        HP = Mathf.Max(HP -1,0);
+        if(HP == 0)
+            gameover.Invoke();
     }
     
     public IEnumerator SlowMotion(float duration, float scale)
