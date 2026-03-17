@@ -1,9 +1,10 @@
-using System.Collections;
+ï¿½ï½¿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 
@@ -25,6 +26,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int HP;
     [SerializeField] int MAXHP;
 
+    public int GetHP() => HP;
+
     [SerializeField] float ChargeCoumt = 0;
     [SerializeField] List<AudioClip> audioClips = new List<AudioClip>();
 
@@ -34,6 +37,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]bool pressing;
 
+    [SerializeField] UnityEvent gameover;
     Camera_Controller Camera =>Camera_Controller.instance;
 
     public Vector2 CursorDirection = Vector2.zero;
@@ -64,7 +68,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        //Debug.Log("ˆÚ“®‚µ‚½");
+        //Debug.Log("é˜ï½»èœè¼”ï¼ ç¸º");
         MoveInput = context.ReadValue<Vector2>();
 
         if (MoveInput != Vector2.zero)
@@ -206,13 +210,21 @@ public class PlayerController : MonoBehaviour
         return cursordirection.normalized;
 
     }
+
+    public void TakeDamege()
+    {
+        HP--;
+        if(HP == 0)
+        gameover.Invoke();
+    }
+    
     public IEnumerator SlowMotion(float duration, float scale)
     {
         float originalTimeScale = Time.timeScale;
 
         Time.timeScale = scale;
 
-        // ƒŠƒAƒ‹ŠÔ‚Å‘Ò‚Âi©‚±‚±d—vj
+        // ãƒªã‚¢ãƒ«æ™‚é–“ã§å¾…ã¤ï¼ˆâ†ã“ã“é‡è¦ï¼‰
         yield return new WaitForSecondsRealtime(duration);
 
         Time.timeScale = 1;
