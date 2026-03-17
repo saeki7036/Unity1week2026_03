@@ -15,6 +15,7 @@ public class ShellController : MonoBehaviour
     public float CulcarateSpeed = 0;
 
     [SerializeField] Rigidbody2D rb;
+    [SerializeField] int MAX_LEVEL = 5;
 
     private void Start()
     {
@@ -23,10 +24,26 @@ public class ShellController : MonoBehaviour
     }
     public void Shot(int UP_LEVEL,Vector2 direction) 
     {
-        Level += UP_LEVEL;
-        CulcarateSpeed = DefaltSpeed * (1 + Level * UP_SPEED_DOUBLE);
-        CulcarateAttack = DefaltAttack * Level;
+        if (Level <= MAX_LEVEL)
+        {
+            Level += UP_LEVEL;
+            CulcarateSpeed = DefaltSpeed * (1 + Level * UP_SPEED_DOUBLE);
+            CulcarateAttack = DefaltAttack * Level;
+        }
+        
 
         rb.velocity = direction * CulcarateSpeed;
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Wall")) 
+        {
+            if (Level <= MAX_LEVEL) return; 
+                Level = MAX_LEVEL;
+            CulcarateSpeed = DefaltSpeed * (1 + Level * UP_SPEED_DOUBLE);
+            CulcarateAttack = DefaltAttack * Level;
+            rb.velocity = rb.velocity.normalized * CulcarateSpeed;
+        }
     }
 }

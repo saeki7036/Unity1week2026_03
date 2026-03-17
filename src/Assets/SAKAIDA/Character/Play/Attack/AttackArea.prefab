@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -145,3 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AddLevel: 1
   Direction: {x: 0, y: 0}
+  player: {fileID: 0}
+  clips:
+  - {fileID: 8300000, guid: 36db83ed3f629454ca43b94b0b63b5ed, type: 3}
+  - {fileID: 8300000, guid: 3ccf9bba333e75d44b2ea70ce3fbb30a, type: 3}
