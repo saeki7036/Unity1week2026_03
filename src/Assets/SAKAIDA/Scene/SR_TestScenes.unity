@@ -1309,6 +1309,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ed4bce1936fbb549ba6a344b30c67a0, type: 3}
+--- !u!1 &2030913140 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4702696369631461485, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
+  m_PrefabInstance: {fileID: 5393015895116174748}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2051484742
 GameObject:
   m_ObjectHideFlags: 0
@@ -1508,6 +1513,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shell
       objectReference: {fileID: 0}
+    - target: {fileID: 4528782512065107450, guid: 6ed4bce1936fbb549ba6a344b30c67a0, type: 3}
+      propertyPath: m_Color.b
+      value: 0.10914183
+      objectReference: {fileID: 0}
+    - target: {fileID: 4528782512065107450, guid: 6ed4bce1936fbb549ba6a344b30c67a0, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8037735
+      objectReference: {fileID: 0}
+    - target: {fileID: 4528782512065107450, guid: 6ed4bce1936fbb549ba6a344b30c67a0, type: 3}
+      propertyPath: m_Color.r
+      value: 0.10160909
+      objectReference: {fileID: 0}
     - target: {fileID: 4784263169828136866, guid: 6ed4bce1936fbb549ba6a344b30c67a0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.36
@@ -1565,6 +1582,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Players
       objectReference: {fileID: 0}
+    - target: {fileID: 838809314915861668, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 838809314915861668, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 838809314915861668, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.12
+      objectReference: {fileID: 0}
     - target: {fileID: 1192594383576077949, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1609,6 +1638,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5630059413261762482, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d67c2a1781afd79448e84f80f422bf2d, type: 3}
+    - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
+      propertyPath: Animbody
+      value: 
+      objectReference: {fileID: 2030913140}
+    - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
+      propertyPath: ChargeAddLevel
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6099402110038900659, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1f0c21f7ab4fe7b488e70294702b83e7, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
