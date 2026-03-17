@@ -13,10 +13,19 @@ public class Camera_Controller : MonoBehaviour
     private Coroutine shakeCoroutine; // 現在再生中のコルーチンを保持
     private Vector3 initialPosition;  // 元の位置を保持
 
+    public static Camera_Controller instance;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
     }
 
     // Update is called once per frame
