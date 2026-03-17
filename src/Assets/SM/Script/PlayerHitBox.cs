@@ -9,6 +9,12 @@ public class PlayerHitBox : MonoBehaviour
 
     static readonly string ShellTag = "Shell";
 
+    public void Hit()
+    {
+        controller.TakeDamege();
+        hitPointViewer.SetHitPoint(controller.GetHP());
+    }
+
     // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -20,8 +26,7 @@ public class PlayerHitBox : MonoBehaviour
                     return;
             }
 
-            controller.TakeDamege();
-            hitPointViewer.SetHitPoint(controller.GetHP());
+            Hit();
         }
     }
 }
