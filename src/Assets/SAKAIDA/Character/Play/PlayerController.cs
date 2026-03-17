@@ -22,8 +22,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int MAXHP;
 
     [SerializeField] float ChargeCoumt = 0;
+    [SerializeField] List<AudioClip> audioClips = new List<AudioClip>();
 
     [SerializeField] float AttackDestroyTime = 0.1f;
+    [SerializeField] float AttackFowerd = 1;
     [SerializeField] GameObject AttackArea;
 
     [SerializeField]bool pressing;
@@ -73,13 +75,14 @@ public class PlayerController : MonoBehaviour
     }
     public void OnAttack(InputAction.CallbackContext context)
     {
-        movetype = MoveType.Attack;
+        
         if (context.phase == InputActionPhase.Started)
         {
             pressing = true;
         }
         if (context.phase == InputActionPhase.Canceled)
         {
+            movetype = MoveType.Attack;
             pressing = false;
         }
         CursorDirection = CursorMathf();
@@ -160,6 +163,10 @@ public class PlayerController : MonoBehaviour
         playerAttack.Direction = CursorDirection;
         playerAttack.AddLevel = DefaltAddLevel;
 
+        CL_AttackArea.transform.position =
+     transform.position + (Vector3)CursorDirection * AttackFowerd;
+
+        AudioManager.instance.PlaySE(audioClips[0]);
         Destroy(CL_AttackArea, AttackDestroyTime);
 
         movetype = MoveType.Nomal;
