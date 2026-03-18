@@ -9832,6 +9832,7 @@ MonoBehaviour:
   DefaltAttack: 1
   CulcarateAttack: 0
   Level: 0
+  BrakeShell: 0
   DefaltSpeed: 2
   UP_SPEED_DOUBLE: 0.8
   CulcarateSpeed: 0
@@ -9842,6 +9843,9 @@ MonoBehaviour:
   HightSpeedColor: {r: 1, g: 0.18679237, b: 0.18679237, a: 0}
   animator: {fileID: 5637494000548970365}
   spriteRenderer: {fileID: 4528782512065107450}
+  Effects:
+  - {fileID: 1317370553891706128}
+  - {fileID: 2245526639628764060}
 --- !u!50 &2366595174470507383
 Rigidbody2D:
   serializedVersion: 4

@@ -150,7 +150,7 @@ public class PlayerController : MonoBehaviour
                 
                 break;
             case MoveType.NoAction:
-                //isNoAction();
+                isNoAction();
                 break;
             case MoveType.Wait:
                 
@@ -161,6 +161,20 @@ public class PlayerController : MonoBehaviour
         }
 
 
+    }
+    void isNoAction() 
+    { 
+    rb.velocity = Vector3.zero;
+    }
+    void isDamage() 
+    {
+        animator.Play("被弾");
+       
+    }
+
+    public void Damage() 
+    {
+        animator.Play("被弾");
     }
     public void isMove(float value)
     {        

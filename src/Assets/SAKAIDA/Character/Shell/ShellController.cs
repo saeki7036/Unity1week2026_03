@@ -23,6 +23,8 @@ public class ShellController : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] SpriteRenderer spriteRenderer;
 
+    [SerializeField] List<GameObject> Effects;
+
     private void Start()
     {
         CulcarateSpeed = DefaltSpeed * (1 + Level * UP_SPEED_DOUBLE) ;
@@ -53,7 +55,18 @@ public class ShellController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Wall")) 
         {
-            if (BrakeShell) Destroy(gameObject);
+            if (BrakeShell) 
+            {
+                foreach (var ef in Effects) 
+                { 
+                    ef.transform.parent = null;
+                    ParticleSystem ps = ef.GetComponent<ParticleSystem>();
+                    ps.emissionRate = 0;
+                    Destroy(ef.gameObject,3);
+                }
+                Destroy(gameObject);
+                return;
+            }
 
             if (Level <= MAX_LEVEL)
             {
