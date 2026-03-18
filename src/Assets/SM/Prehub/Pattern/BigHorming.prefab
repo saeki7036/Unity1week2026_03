@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotInterval: 200
-  bulletSmall: {fileID: 177135032375817284, guid: 4499fd024e036c243b4046c8a1091e3c, type: 3}
-  bulletLarge: {fileID: 4269477159804290340, guid: 6ed4bce1936fbb549ba6a344b30c67a0, type: 3}
+  bulletSmall: {fileID: 1478612822827482976, guid: 786a54289636d0d429358c33f4537823, type: 3}
+  bulletLarge: {fileID: 1478612822827482976, guid: d29587492b43fe640a9ae09d58974f16, type: 3}
   aimValue: 560
   patarnReportTimeSpan: 0.2
   patarnReportValue: 5
+  ToDistance: 3

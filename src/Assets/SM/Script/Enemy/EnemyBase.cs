@@ -67,9 +67,14 @@ public class EnemyBase : MonoBehaviour
         // do
     } 
 
-    void TakeDamege(int damege)
+    void TakeDamege(int damage)
     {
-        hp -= damege;
+        if(damage <= 0)
+            return;
+
+        hp -= damage;
+
+        DamageOutPut.ShowDamage(damage, this.transform);
 
         if(hp <= 0)
         {

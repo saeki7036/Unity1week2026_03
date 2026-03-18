@@ -36,17 +36,31 @@ public class Shot3Ways : ShotPatarnBase
             //プレイヤーに飛ばす方向を計算
             Vector2 dirTarget = (target - enemyTransform.position).normalized;
 
+            //発射方向計算
+            float angleRadians = (aimValue * i) * Mathf.Deg2Rad;
+
+            //発射方向計算
+            Vector2 rotate = Quaternion.Euler(Vector3.forward * angleRadians) * dirTarget.normalized;
+
             //オブジェクト生成
-            GameObject bullet = Instantiate(bulletPrehab, SpawnPos + ToDistance * dirTarget, Quaternion.identity);
+            GameObject bullet = Instantiate(bulletPrehab, SpawnPos + ToDistance * rotate, Quaternion.identity);
+
+            StartCoroutine(ShotStay(bullet, rotate, 3));
+
+            //ShellController shell = bullet.GetComponent<ShellController>();          
+
+            //shell.Shot(3, rotate);
+
+            continue;
 
             //Rigidbody2D取得
             Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
 
             //発射方向計算
-            float angleRadians = (aimValue * i)* Mathf.Deg2Rad;
+            angleRadians = (aimValue * i)* Mathf.Deg2Rad;
 
             //発射方向計算
-            Vector2 rotate = Quaternion.Euler(Vector3.forward * angleRadians) * dirTarget.normalized;
+            rotate = Quaternion.Euler(Vector3.forward * angleRadians) * dirTarget.normalized;
 
             //発射方向代入
             bulletRB.velocity = rotate;

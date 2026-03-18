@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotInterval: 100
-  bulletPrehab: {fileID: 4269477159804290340, guid: 6ed4bce1936fbb549ba6a344b30c67a0, type: 3}
+  bulletPrehab: {fileID: 1478612822827482976, guid: 786a54289636d0d429358c33f4537823, type: 3}
   patarnReportTimeSpan: 0.2
   patarnReportValue: 3
+  ToDistance: 3

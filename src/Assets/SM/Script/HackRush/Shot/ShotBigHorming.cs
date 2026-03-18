@@ -53,14 +53,25 @@ public class ShotBigHorming : ShotPatarnBase
         //オブジェクト生成
         GameObject bullet = Instantiate(bulletLarge, SpawnPos + ToDistance * dirTarget, Quaternion.identity);
 
-        //Rigidbody2D取得
-        Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
-
         //ノーマライズ
         Vector2 rotate = Quaternion.Euler(Vector3.forward) * dirTarget.normalized;
 
+        StartCoroutine(ShotStay(bullet, rotate, 4));
+
+        return;
+
+        //ShellController shell = bullet.GetComponent<ShellController>();
+
+        //shell.Shot(4, rotate);
+
+        //Rigidbody2D取得
+        //Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
+
+        //ノーマライズ
+        //Vector2 rotate = Quaternion.Euler(Vector3.forward) * dirTarget.normalized;
+
         //発射方向代入
-        bulletRB.velocity = rotate;
+        //bulletRB.velocity = rotate;
     }
 
     //発射処理の遅延処理
@@ -92,20 +103,32 @@ public class ShotBigHorming : ShotPatarnBase
             //基準となる方向を計算
             Vector2 dirTarget = (target - enemyTransform.position).normalized;
 
-            //オブジェクト生成
-            GameObject bullet = Instantiate(bulletSmall, SpawnPos + ToDistance * dirTarget, Quaternion.identity);
-
-            //Rigidbody2D取得
-            Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
-
             //発射方向計算
             float angleRadians = (aimValue * i) * Mathf.Deg2Rad;
 
             //発射方向計算
-            Vector2 rotate = Quaternion.Euler(Vector3.forward * angleRadians) * dirTarget;
+            Vector2 rotate = Quaternion.Euler(Vector3.forward * angleRadians) * dirTarget.normalized;
+
+            //オブジェクト生成
+            GameObject bullet = Instantiate(bulletSmall, SpawnPos + ToDistance * rotate, Quaternion.identity);
+
+            StartCoroutine(ShotStay(bullet, rotate, 3));
+
+            //ShellController shell = bullet.GetComponent<ShellController>();
+
+            //shell.Shot(3, rotate);         
+
+            //Rigidbody2D取得
+            //Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
+
+            //発射方向計算
+            //float angleRadians = (aimValue * i) * Mathf.Deg2Rad;
+
+            //発射方向計算
+            //Vector2 rotate = Quaternion.Euler(Vector3.forward * angleRadians) * dirTarget;
 
             //発射方向代入
-            bulletRB.velocity = rotate;
+            //bulletRB.velocity = rotate;
         }
     }
 }

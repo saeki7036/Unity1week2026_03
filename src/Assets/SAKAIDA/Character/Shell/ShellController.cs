@@ -28,6 +28,9 @@ public class ShellController : MonoBehaviour
         CulcarateSpeed = DefaltSpeed * (1 + Level * UP_SPEED_DOUBLE) ;
         CulcarateAttack = DefaltAttack * Level;
     }
+
+    public bool IsNoVerocity ()=> rb.velocity == Vector2.zero;
+
     public void Shot(int UP_LEVEL,Vector2 direction) 
     {
         animator.speed = (float)Level / 3;
