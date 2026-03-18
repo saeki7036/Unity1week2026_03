@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ShellController : MonoBehaviour
 {
@@ -25,16 +27,29 @@ public class ShellController : MonoBehaviour
 
     [SerializeField] List<GameObject> Effects;
 
+    Coroutine coroutine;
+    float StartScale; 
+
     private void Start()
     {
         CulcarateSpeed = DefaltSpeed * (1 + Level * UP_SPEED_DOUBLE) ;
         CulcarateAttack = DefaltAttack * Level;
+
+        StartScale = transform.localScale.x;
+        coroutine = StartCoroutine(ScaleUp());
     }
 
     public bool IsNoVerocity ()=> rb.velocity == Vector2.zero;
 
     public void Shot(int UP_LEVEL,Vector2 direction) 
     {
+        if(coroutine != null)
+        {
+            StopCoroutine(coroutine);
+            coroutine = null;
+            transform.localScale = new Vector3(StartScale, StartScale, 1);
+        }
+
         animator.speed = (float)Level / 3;
         animator.Play("移動");
         
@@ -112,5 +127,25 @@ public class ShellController : MonoBehaviour
 
         // HSV �� RGB
         return Color.HSVToRGB(h, s, v);
+    }
+
+    
+    private IEnumerator ScaleUp()
+    {
+        float scale = StartScale;
+        
+        var _time = 0.0f;
+
+        // 拡大演出
+        while (_time < 0.5f)
+        {
+            var scaleRate = Mathf.Min(_time / 0.1f, 1.0f);
+            transform.localScale = new Vector3(scaleRate * scale, scaleRate * scale,1);
+            yield return null;
+            _time += Time.deltaTime;
+        }
+
+        // 状態リセット
+        transform.localScale = new Vector3(scale, scale, 1);
     }
 }
