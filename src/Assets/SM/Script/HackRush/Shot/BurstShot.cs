@@ -58,9 +58,11 @@ public class BurstShot : ShotPatarnBase
         //オブジェクト生成
         GameObject bullet = Instantiate(bulletPrehab, SpawnPos + ToDistance * dirTarget, Quaternion.identity);
 
-        ShellController shell = bullet.GetComponent<ShellController>();
+        StartCoroutine(ShotStay(bullet, dirTarget.normalized, 4));
 
-        shell.Shot(5, dirTarget.normalized);
+        //ShellController shell = bullet.GetComponent<ShellController>();
+
+        //shell.Shot(5, dirTarget.normalized);
 
         return;
 

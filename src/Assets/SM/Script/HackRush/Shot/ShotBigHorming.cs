@@ -53,14 +53,16 @@ public class ShotBigHorming : ShotPatarnBase
         //オブジェクト生成
         GameObject bullet = Instantiate(bulletLarge, SpawnPos + ToDistance * dirTarget, Quaternion.identity);
 
-        ShellController shell = bullet.GetComponent<ShellController>();
-
         //ノーマライズ
         Vector2 rotate = Quaternion.Euler(Vector3.forward) * dirTarget.normalized;
 
-        shell.Shot(4, rotate);
+        StartCoroutine(ShotStay(bullet, rotate, 4));
 
         return;
+
+        //ShellController shell = bullet.GetComponent<ShellController>();
+
+        //shell.Shot(4, rotate);
 
         //Rigidbody2D取得
         //Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
@@ -110,9 +112,11 @@ public class ShotBigHorming : ShotPatarnBase
             //オブジェクト生成
             GameObject bullet = Instantiate(bulletSmall, SpawnPos + ToDistance * rotate, Quaternion.identity);
 
-            ShellController shell = bullet.GetComponent<ShellController>();
+            StartCoroutine(ShotStay(bullet, rotate, 3));
 
-            shell.Shot(3, rotate);         
+            //ShellController shell = bullet.GetComponent<ShellController>();
+
+            //shell.Shot(3, rotate);         
 
             //Rigidbody2D取得
             //Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();

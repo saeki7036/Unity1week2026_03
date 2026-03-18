@@ -45,9 +45,11 @@ public class Shot3Ways : ShotPatarnBase
             //オブジェクト生成
             GameObject bullet = Instantiate(bulletPrehab, SpawnPos + ToDistance * rotate, Quaternion.identity);
 
-            ShellController shell = bullet.GetComponent<ShellController>();          
+            StartCoroutine(ShotStay(bullet, rotate, 3));
 
-            shell.Shot(3, rotate);
+            //ShellController shell = bullet.GetComponent<ShellController>();          
+
+            //shell.Shot(3, rotate);
 
             continue;
 
