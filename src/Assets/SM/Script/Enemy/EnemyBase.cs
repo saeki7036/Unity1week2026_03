@@ -13,6 +13,10 @@ public enum enemyStatus
 
 public class EnemyBase : MonoBehaviour
 {
+    public int DefaltHP = 7;
+    public int MaxHp = 7;
+    public int Level = 1;
+    [SerializeField] float PU_HP_DOUBLE = 0.5f;
     [SerializeField] int hp = 7;
 
     [SerializeField] float ActTimeSpawn = 3f;
@@ -58,6 +62,14 @@ public class EnemyBase : MonoBehaviour
         return;//基底クラス
     }
 
+    public void Spawn(int AddLevel) 
+    {
+
+        eStatus = enemyStatus.Act;
+
+       
+
+    }
     
     protected virtual void Act()
     {

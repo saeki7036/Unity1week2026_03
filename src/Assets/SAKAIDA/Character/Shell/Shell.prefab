@@ -9833,8 +9833,8 @@ MonoBehaviour:
   CulcarateAttack: 0
   Level: 0
   BrakeShell: 0
-  DefaltSpeed: 2
-  UP_SPEED_DOUBLE: 0.8
+  DefaltSpeed: 1.7
+  UP_SPEED_DOUBLE: 0.6
   CulcarateSpeed: 0
   HeighLevelEffect: {fileID: 3317899819414853936}
   rb: {fileID: 2366595174470507383}
@@ -9871,7 +9871,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!58 &3906269488546083631
 CircleCollider2D:
