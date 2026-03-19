@@ -14,12 +14,19 @@ public enum enemyStatus
 public class EnemyBase : MonoBehaviour
 {
     public int DefaltHP = 7;
-    public int MaxHp = 7;
-    public int Level = 1;
+    [SerializeField] int MaxHp = 7;    
     [SerializeField] float PU_HP_DOUBLE = 0.5f;
     [SerializeField] int hp = 7;
 
     [SerializeField] float ActTimeSpawn = 3f;
+
+    static int Level = 1;
+
+    public static int GetLevel() => Level;
+
+    public static void ResetLevel() => Level = 1;
+
+    public static void AddLevel ()=> Level++;
 
     float ActTimeCount;
 
@@ -34,9 +41,10 @@ public class EnemyBase : MonoBehaviour
     public void EnemyDeath() => gameObject.SetActive(false);
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
-        //eStatus = enemyStatus.Stay;
+        eStatus = enemyStatus.Act;
+        SetHP();
     }
 
     // Update is called once per frame
@@ -62,21 +70,14 @@ public class EnemyBase : MonoBehaviour
         return;//基底クラス
     }
 
-    public void Spawn(int AddLevel) 
+    public void SetHP() 
     {
-
-        eStatus = enemyStatus.Act;
-
-       
-
+        hp = MaxHp * Level;
     }
     
-    protected virtual void Act()
+    protected virtual void DestroyPrehub()
     {
-        if (hp <= 0)
-            return;
-
-        // do
+        Destroy(this.gameObject);
     } 
 
     void TakeDamege(int damage)
@@ -91,6 +92,7 @@ public class EnemyBase : MonoBehaviour
         if(hp <= 0)
         {
             IsDeath();
+            DestroyPrehub();
         }
     }
 

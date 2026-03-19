@@ -1,31 +1,75 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class EnemyCheck : MonoBehaviour
 {
-    [SerializeField] List<EnemyBase> EnemyList;
+    [SerializeField] GameObject Enemy_S, Enemy_L;
 
     [SerializeField] UnityEvent ClearEvent;
 
-    [SerializeField] int MaxActCount = 4;
-
     [SerializeField] bool checkFlag = true;
 
-    public int EnemyCrrentCount;
-    int ActCrrentCount;
+    [SerializeField] int StartActCount = 4;
+
+    [SerializeField] float WaveTime = 30f;
+
+    [SerializeField] Vector2 SpawnRange_min, SpawnRange_max;
+
+    [SerializeField] StopShell addShell;
+
+    int CurrentActCount;
+    float CurrentWaveTime;
+
+    Stack<GameObject> EnemyList;
+    List<float> EnemySpawnTime;
 
     public void CheckStart()
     {
         checkFlag = false;
     }
 
+    public void CheckStop()
+    {
+        checkFlag = true;
+    }
+
     private void Start()
     {
-        EnemyCrrentCount = EnemyList.Count;
-        ActCrrentCount = 0;
+        EnemyList = new();
+        EnemySpawnTime = new();
+
+        EnemyBase.ResetLevel();
+
+        NextLevelSetting();
     }
+
+    Vector2 RamdomPos => new Vector2(UnityEngine.Random.Range(SpawnRange_min.x, SpawnRange_max.x),
+                                     UnityEngine.Random.Range(SpawnRange_min.y, SpawnRange_max.y));
+
+    void NextLevelSetting()
+    {
+        Debug.Log(EnemyBase.GetLevel());
+        CurrentActCount = StartActCount + EnemyBase.GetLevel();
+
+        CurrentWaveTime = 0;
+
+        EnemyList.Clear();
+        EnemySpawnTime.Clear();
+
+        EnemyList.Push(Instantiate(Enemy_L, RamdomPos, Quaternion.identity));
+
+        for (int i = 0; i < CurrentActCount; i++)
+        {
+            EnemyList.Push(Instantiate(Enemy_S, RamdomPos, Quaternion.identity));
+            EnemySpawnTime.Add(UnityEngine.Random.Range(0, WaveTime));
+        }
+
+        EnemySpawnTime.Sort();
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -33,54 +77,37 @@ public class EnemyCheck : MonoBehaviour
         if(checkFlag)
             return;
 
-        bool check = false;
+        CurrentWaveTime = Mathf.Min(WaveTime, CurrentWaveTime + Time.deltaTime);
 
-        for (int i = 0; i < EnemyList.Count; i++)
+        if(EnemySpawnTime.Count == 0)
         {
-            if (EnemyList[i] == null)
-            {
-                continue;
-            }
-
-            switch (EnemyList[i].eStatus)
-            {
-                case enemyStatus.Stay:
-                    {
-                        if (ActCrrentCount < MaxActCount)
-                        {
-                            EnemyList[i].EnemySpwan();
-                            EnemyList[i].SetStatus(enemyStatus.Act);
-                            ActCrrentCount++;
-                        }
-                        check = true;
-                    }
-                    break;
-                case enemyStatus.Act:
-                    {
-                        check = true;
-                    }
-                    break;
-                case enemyStatus.Stop:
-                    {
-                        EnemyList[i].EnemyDeath();
-                        EnemyList[i].SetStatus(enemyStatus.Death);
-                        EnemyCrrentCount--;
-                        ActCrrentCount--;
-                    }
-                    break;
+            if(EnemyList.Count == 1) 
+            { 
+                if(EnemyList.Peek() == null)
+                {
+                    EnemyBase.AddLevel();
+                    addShell.SpawnShell();
+                    NextLevelSetting();
+                }
+                else if(!EnemyList.Peek().activeSelf)
+                {
+                    EnemyList.Peek().SetActive(true);
+                } 
             }
         }
-
-        //Debug.Log(check+ "" + EnemyCrrentCount +""+ ActCrrentCount);
-        if (check || EnemyCrrentCount != 0 || ActCrrentCount != 0)
+        else if (EnemySpawnTime[0] <= CurrentWaveTime)
         {
-            return;
+            Debug.Log(EnemySpawnTime[0]);
+            EnemySpawnTime.RemoveAt(0);
+
+            if(EnemyList.Count > 1)
+            {
+
+                
+                EnemyList.Peek().SetActive(true);
+
+                EnemyList.Pop();
+            }           
         }
-        else
-        {
-            ClearEvent.Invoke();
-
-            checkFlag = true;
-        } 
     }
 }

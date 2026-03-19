@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2204170721765012650
 Transform:
   m_ObjectHideFlags: 0
@@ -164,6 +164,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 468f227400d7dbe4abd6e0b61a9caf8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DefaltHP: 7
+  MaxHp: 30
+  PU_HP_DOUBLE: 0.5
   hp: 100
   ActTimeSpawn: 3
   eStatus: 0
