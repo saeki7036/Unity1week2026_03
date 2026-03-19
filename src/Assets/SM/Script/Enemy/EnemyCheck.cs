@@ -20,6 +20,8 @@ public class EnemyCheck : MonoBehaviour
 
     [SerializeField] StopShell addShell;
 
+    [SerializeField] PhaseTextAnimationController phase;
+
     int CurrentActCount;
     float CurrentWaveTime;
 
@@ -51,7 +53,8 @@ public class EnemyCheck : MonoBehaviour
 
     void NextLevelSetting()
     {
-        Debug.Log(EnemyBase.GetLevel());
+        //Debug.Log(EnemyBase.GetLevel());
+        phase.PhaseStart(EnemyBase.GetLevel());
         CurrentActCount = StartActCount + EnemyBase.GetLevel();
 
         CurrentWaveTime = 0;

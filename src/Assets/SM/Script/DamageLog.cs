@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,13 +21,15 @@ public class DamageLog : MonoBehaviour
         text.text = Value.ToString();
 
         targetPos = target;
-
+        BeforePos = target.position;
         offset = StartOffset;
 
         Destroy(gameObject, DestroyWaitTime);
     }
 
     float timecount = 0;
+    Vector2 BeforePos = new(-111,-111);
+    GameObject Before;
 
     // Update is called once per frame
     void Update()
@@ -42,6 +45,24 @@ public class DamageLog : MonoBehaviour
             Vector2 screenPos = (Vector2)Camera.main.WorldToScreenPoint(point);
 
             transform.position = screenPos;
+
+            BeforePos = targetPos.position;
         }
+        else
+        {
+            Before = new();
+
+            Before.transform.position = BeforePos;
+
+            targetPos = Before.transform;
+
+            Update();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if(Before != null)
+        Destroy(Before);
     }
 }
