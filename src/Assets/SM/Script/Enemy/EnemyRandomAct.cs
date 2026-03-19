@@ -12,4 +12,10 @@ public class EnemyRandomAct : EnemyBase
 
         patarns[random].PatarnPlay(this.transform);
     }
+
+    protected override void DestroyPrehub()
+    {
+        //AddLevel();
+        base.DestroyPrehub();
+    }
 }
