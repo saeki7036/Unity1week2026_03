@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7853720885183596377}
   - component: {fileID: 3499808312432008666}
   - component: {fileID: 437711923098936961}
+  - component: {fileID: 6586232378970770178}
   m_Layer: 7
   m_Name: Enemy_L
   m_TagString: Enemy
@@ -169,11 +170,39 @@ MonoBehaviour:
   PU_HP_DOUBLE: 0.5
   hp: 100
   ActTimeSpawn: 3
+  DieEffect: {fileID: 7358643713522650685, guid: 980dfab4b69a7004f9ed8c6a34efe8c8, type: 3}
+  DamageEffect: {fileID: 6815521508524782886, guid: 6e0ea48a82ef2994dac691138be13f91, type: 3}
+  SpawnEffect: {fileID: 134892525521591355, guid: e13862d1ef3f8eb48be671c620258e40, type: 3}
+  animator: {fileID: 6586232378970770178}
+  audioClips:
+  - {fileID: 8300000, guid: 2a6174cb55bc1954f94851c307a290f6, type: 3}
+  - {fileID: 8300000, guid: 9ac045e9f883e694f8bb7884af757cc5, type: 3}
   eStatus: 0
   patarns:
   - {fileID: 7272299623305450718}
   - {fileID: 1703645119898193476}
   - {fileID: 3428231346303598213}
+--- !u!95 &6586232378970770178
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4384923347023482424}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cccb270ec6e549e4cb82e61c73a572e9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &2170097504514526134
 PrefabInstance:
   m_ObjectHideFlags: 0

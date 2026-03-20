@@ -20,6 +20,12 @@ public class EnemyBase : MonoBehaviour
 
     [SerializeField] float ActTimeSpawn = 3f;
 
+    [SerializeField] GameObject DieEffect;
+    [SerializeField] GameObject DamageEffect;
+    public GameObject SpawnEffect;
+    [SerializeField] Animator animator;
+    [SerializeField] List<AudioClip> audioClips = new List<AudioClip>();
+
     static int Level = 1;
 
     public static int GetLevel() => Level;
@@ -85,6 +91,10 @@ public class EnemyBase : MonoBehaviour
         if(damage <= 0)
             return;
 
+        animator.Play("被弾", 1, 0);
+        GameObject CL_DieEffect = Instantiate(DamageEffect, transform.position, Quaternion.identity);
+        Destroy(CL_DieEffect, 2);
+        AudioManager.instance.PlaySE(audioClips[1]);
         hp -= damage;
 
         DamageOutPut.ShowDamage(damage, this.transform);
@@ -99,6 +109,10 @@ public class EnemyBase : MonoBehaviour
     void IsDeath()
     {
         eStatus = enemyStatus.Stop;
+        GameObject CL_DieEffect = Instantiate(DieEffect, transform.position, Quaternion.identity);
+        Destroy(CL_DieEffect, 2);
+
+        AudioManager.instance.PlaySE(audioClips[0]);
         //gameObject.SetActive(false);
     }
 

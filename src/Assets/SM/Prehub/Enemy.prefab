@@ -135,8 +135,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d65c79ed0c6e3724d89f3d27e79854ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DefaltHP: 7
+  MaxHp: 7
+  PU_HP_DOUBLE: 0.5
   hp: 7
   ActTimeSpawn: 3
+  DieEffect: {fileID: 7358643713522650685, guid: 980dfab4b69a7004f9ed8c6a34efe8c8, type: 3}
+  DamageEffect: {fileID: 6815521508524782886, guid: 6e0ea48a82ef2994dac691138be13f91, type: 3}
+  SpawnEffect: {fileID: 134892525521591355, guid: e13862d1ef3f8eb48be671c620258e40, type: 3}
+  animator: {fileID: 0}
+  audioClips:
+  - {fileID: 8300000, guid: 2a6174cb55bc1954f94851c307a290f6, type: 3}
+  - {fileID: 8300000, guid: 9ac045e9f883e694f8bb7884af757cc5, type: 3}
   eStatus: 0
   patarn: {fileID: 4341624759114175445}
 --- !u!50 &8476209819314679663
