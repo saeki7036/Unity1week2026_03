@@ -1129,6 +1129,11 @@ MonoBehaviour:
   PU_HP_DOUBLE: 0.5
   hp: 21
   ActTimeSpawn: 3
+  DieEffect: {fileID: 0}
+  DamageEffect: {fileID: 0}
+  SpawnEffect: {fileID: 0}
+  animator: {fileID: 0}
+  audioClips: []
   eStatus: 0
 --- !u!50 &451261464
 Rigidbody2D:
@@ -2336,6 +2341,11 @@ MonoBehaviour:
   PU_HP_DOUBLE: 0.5
   hp: 21
   ActTimeSpawn: 3
+  DieEffect: {fileID: 0}
+  DamageEffect: {fileID: 0}
+  SpawnEffect: {fileID: 0}
+  animator: {fileID: 0}
+  audioClips: []
   eStatus: 0
 --- !u!50 &806045020
 Rigidbody2D:
@@ -2563,6 +2573,11 @@ MonoBehaviour:
   PU_HP_DOUBLE: 0.5
   hp: 21
   ActTimeSpawn: 3
+  DieEffect: {fileID: 0}
+  DamageEffect: {fileID: 0}
+  SpawnEffect: {fileID: 0}
+  animator: {fileID: 0}
+  audioClips: []
   eStatus: 0
 --- !u!50 &836220860
 Rigidbody2D:
@@ -2962,6 +2977,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
+      propertyPath: audioClips.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
+      propertyPath: audioClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3db8e00238f7e6845b1174533505bd53, type: 3}
     - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
       propertyPath: gameover.m_PersistentCalls.m_Calls.Array.size
       value: 4
@@ -4500,6 +4523,11 @@ MonoBehaviour:
   PU_HP_DOUBLE: 0.5
   hp: 7
   ActTimeSpawn: 3
+  DieEffect: {fileID: 0}
+  DamageEffect: {fileID: 0}
+  SpawnEffect: {fileID: 0}
+  animator: {fileID: 0}
+  audioClips: []
   eStatus: 0
 --- !u!58 &1373864218
 CircleCollider2D:
@@ -4667,6 +4695,11 @@ MonoBehaviour:
   PU_HP_DOUBLE: 0.5
   hp: 7
   ActTimeSpawn: 3
+  DieEffect: {fileID: 0}
+  DamageEffect: {fileID: 0}
+  SpawnEffect: {fileID: 0}
+  animator: {fileID: 0}
+  audioClips: []
   eStatus: 0
 --- !u!58 &1375780531
 CircleCollider2D:
@@ -4882,6 +4915,11 @@ MonoBehaviour:
   PU_HP_DOUBLE: 0.5
   hp: 21
   ActTimeSpawn: 3
+  DieEffect: {fileID: 0}
+  DamageEffect: {fileID: 0}
+  SpawnEffect: {fileID: 0}
+  animator: {fileID: 0}
+  audioClips: []
   eStatus: 0
 --- !u!50 &1415674831
 Rigidbody2D:
@@ -5237,6 +5275,11 @@ MonoBehaviour:
   PU_HP_DOUBLE: 0.5
   hp: 7
   ActTimeSpawn: 3
+  DieEffect: {fileID: 0}
+  DamageEffect: {fileID: 0}
+  SpawnEffect: {fileID: 0}
+  animator: {fileID: 0}
+  audioClips: []
   eStatus: 0
 --- !u!58 &1556236315
 CircleCollider2D:
@@ -55241,6 +55284,11 @@ MonoBehaviour:
   PU_HP_DOUBLE: 0.5
   hp: 7
   ActTimeSpawn: 3
+  DieEffect: {fileID: 0}
+  DamageEffect: {fileID: 0}
+  SpawnEffect: {fileID: 0}
+  animator: {fileID: 0}
+  audioClips: []
   eStatus: 0
 --- !u!50 &1869348743
 Rigidbody2D:

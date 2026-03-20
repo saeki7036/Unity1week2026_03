@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     float chargeCount = 0;
     [SerializeField] int HP;
     [SerializeField] int MAXHP;
-
+    bool ChargeFlag = false;
     public int GetHP() => HP;
 
     [SerializeField] float ChargeCoumt = 0;
@@ -229,10 +229,16 @@ public class PlayerController : MonoBehaviour
                 ChargeMaxEffect.SetActive(true);
                 Camera.Shake(0.1f, 0.04f);
                 animator.SetBool("Charge", true);
+                if (!ChargeFlag) 
+                { 
+                    ChargeFlag = true;
+                    AudioManager.instance.PlaySE(audioClips[2]);
+                }
             }
             else 
             {
                 animator.SetBool("Charge", false);
+                ChargeFlag = false;
             }
         }
         else 
