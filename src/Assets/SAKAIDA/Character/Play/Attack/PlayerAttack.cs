@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,9 +12,11 @@ public class PlayerAttack : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         AudioClip clip = clips[0];
-        Debug.Log("ê⁄êG");
+        Debug.Log("Êé•Ëß¶");
         ShellController shell = other.GetComponent<ShellController>();
         if (!shell) return;
+
+        shell.PlayerShot();
 
         if (AddLevel > 2) 
         {
@@ -23,9 +25,9 @@ public class PlayerAttack : MonoBehaviour
             Camera_Controller.instance.Shake(0.2f, 0.2f);
         }
         shell.Shot(AddLevel,Direction);
-
+        
         AudioManager.instance.PlaySE(clip);
-        Debug.Log("çUåÇ");
+        Debug.Log("ÊîªÊíÉ");
     }
 
     

@@ -9846,6 +9846,7 @@ MonoBehaviour:
   Effects:
   - {fileID: 1317370553891706128}
   - {fileID: 2245526639628764060}
+  PlayerShotWaitTime: 0.8
 --- !u!50 &2366595174470507383
 Rigidbody2D:
   serializedVersion: 4

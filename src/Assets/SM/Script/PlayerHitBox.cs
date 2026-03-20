@@ -24,6 +24,9 @@ public class PlayerHitBox : MonoBehaviour
             {
                 if(shell.Level == 0)
                     return;
+                
+                if (shell.IsShotPlayer())
+                    return;
             }
 
             Hit();

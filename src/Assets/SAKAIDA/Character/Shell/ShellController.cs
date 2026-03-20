@@ -27,11 +27,17 @@ public class ShellController : MonoBehaviour
 
     [SerializeField] List<GameObject> Effects;
 
+    [SerializeField] float PlayerShotWaitTime;
+    bool IsPlayerShot;
+
     Coroutine coroutine;
-    float StartScale; 
+    float StartScale;
+
+    public bool IsShotPlayer() => IsPlayerShot;
 
     private void Start()
     {
+        IsPlayerShot = false;
         CulcarateSpeed = DefaltSpeed * (1 + Level * UP_SPEED_DOUBLE) ;
         CulcarateAttack = DefaltAttack * Level;
 
@@ -129,7 +135,19 @@ public class ShellController : MonoBehaviour
         return Color.HSVToRGB(h, s, v);
     }
 
+    public void PlayerShot()
+    {
+        IsPlayerShot = true;
+        StartCoroutine(Wait());
+        
+    }
     
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(PlayerShotWaitTime);
+        IsPlayerShot = false;
+    }
+
     private IEnumerator ScaleUp()
     {
         float scale = StartScale;
