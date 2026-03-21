@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Animator animator;
 
+    [SerializeField]
+    SceneChanger changer;
+
     [SerializeField] float DefaltSpeed = 3;
     [SerializeField] float ChargeSpeed = 1.5f;
     [SerializeField] int DefaltAddLevel = 1;
@@ -27,7 +30,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject ChargeShotEffect;
     [SerializeField] GameObject ChargeEffect;
     [SerializeField] GameObject ChargeMaxEffect;
+    [SerializeField] GameObject DieEffect;
     [SerializeField] GameObject Animbody;
+    [SerializeField] Animator Damageanimator;
     float chargeCount = 0;
     [SerializeField] int HP;
     [SerializeField] int MAXHP;
@@ -52,6 +57,9 @@ public class PlayerController : MonoBehaviour
     public Vector2 MoveInput = Vector2.zero;
     public Vector2 MoveInputSave = Vector2.zero;
     public Vector2 LastMoveInput = Vector2.zero;
+
+    public bool Die = false;
+    float DieResetCount = 0;
 
     [SerializeField] CursorController cursorController;
 
@@ -159,7 +167,15 @@ public class PlayerController : MonoBehaviour
 
 
         }
-
+        if (Die) 
+        {
+            DieResetCount += Time.deltaTime;
+            if (DieResetCount > 2) 
+            {
+                changer.SceneChangeMainGame();
+                Die = false;
+            }
+        }
 
     }
     void isNoAction() 
@@ -296,11 +312,20 @@ public class PlayerController : MonoBehaviour
             return;
 
         HP = Mathf.Max(HP -1,0);
-
+        Damage();
+        Damageanimator.Play("被弾",0,0);
+        AudioManager.instance.PlaySE(audioClips[3]);
         if(HP <= 0)
         {
             movetype = MoveType.NoAction;
-            gameover.Invoke();
+            //gameover.Invoke();
+            animator.Play("死亡");
+            Die = true;
+            AudioManager.instance.BgmSource.Stop();
+            StartCoroutine(SlowMotion(0.5f,0.2f));
+            AudioManager.instance.PlaySE(audioClips[4]);
+            GameObject CL_Effect = Instantiate(DieEffect, transform.position, Quaternion.identity);
+            Destroy(CL_Effect,2);
         }
     }
     public void StartSlow(float duration, float scale)

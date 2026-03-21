@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6913210184547786995}
@@ -125,7 +125,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 6
+  m_Radius: 4
 --- !u!50 &3499808312432008666
 Rigidbody2D:
   serializedVersion: 4
@@ -172,7 +172,7 @@ MonoBehaviour:
   ActTimeSpawn: 3
   DieEffect: {fileID: 7358643713522650685, guid: 980dfab4b69a7004f9ed8c6a34efe8c8, type: 3}
   DamageEffect: {fileID: 6815521508524782886, guid: 6e0ea48a82ef2994dac691138be13f91, type: 3}
-  SpawnEffect: {fileID: 134892525521591355, guid: e13862d1ef3f8eb48be671c620258e40, type: 3}
+  SpawnEffect: {fileID: 6388287091601521490, guid: c35ea9dffa59f904cb426af45b31d584, type: 3}
   animator: {fileID: 6586232378970770178}
   audioClips:
   - {fileID: 8300000, guid: 2a6174cb55bc1954f94851c307a290f6, type: 3}

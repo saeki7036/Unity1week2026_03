@@ -2977,14 +2977,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5630059413261762482, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1021f8a8d1b421741a7258169b6b697e, type: 3}
+    - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
+      propertyPath: changer
+      value: 
+      objectReference: {fileID: 957405597}
+    - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
+      propertyPath: DieEffect
+      value: 
+      objectReference: {fileID: 7358643713522650685, guid: 980dfab4b69a7004f9ed8c6a34efe8c8, type: 3}
+    - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
+      propertyPath: Damageanimator
+      value: 
+      objectReference: {fileID: 2065428190}
     - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
       propertyPath: audioClips.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
       propertyPath: audioClips.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: 3db8e00238f7e6845b1174533505bd53, type: 3}
+    - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
+      propertyPath: audioClips.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 289f25502a272d540aa0f80938455f4e, type: 3}
+    - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
+      propertyPath: audioClips.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 68fafebde86040b49b8e12cdef2164f5, type: 3}
     - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
       propertyPath: gameover.m_PersistentCalls.m_Calls.Array.size
       value: 4
@@ -3006,6 +3030,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
+      propertyPath: gameover.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
       propertyPath: gameover.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1461230746}
@@ -3019,6 +3047,10 @@ PrefabInstance:
       objectReference: {fileID: 781953821}
     - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
       propertyPath: gameover.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 48460092}
+    - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
+      propertyPath: gameover.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
       objectReference: {fileID: 48460092}
     - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
@@ -3038,6 +3070,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
+      propertyPath: gameover.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
       propertyPath: gameover.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetActive
       objectReference: {fileID: 0}
@@ -3051,6 +3087,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
       propertyPath: gameover.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: CheckStop
+      objectReference: {fileID: 0}
+    - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
+      propertyPath: gameover.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
       value: CheckStop
       objectReference: {fileID: 0}
     - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
@@ -3070,6 +3110,10 @@ PrefabInstance:
       value: EnemyCheck, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
+      propertyPath: gameover.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
+      value: EnemyCheck, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
       propertyPath: gameover.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
       value: 1
       objectReference: {fileID: 0}
@@ -3086,6 +3130,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
+      propertyPath: gameover.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
       propertyPath: gameover.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
@@ -3099,6 +3147,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
       propertyPath: gameover.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
+      propertyPath: gameover.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6245043990563672340, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
@@ -3668,6 +3720,14 @@ PrefabInstance:
     - target: {fileID: 4784263169828136866, guid: 6ed4bce1936fbb549ba6a344b30c67a0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8772553442436635714, guid: 6ed4bce1936fbb549ba6a344b30c67a0, type: 3}
+      propertyPath: DefaltSpeed
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8772553442436635714, guid: 6ed4bce1936fbb549ba6a344b30c67a0, type: 3}
+      propertyPath: UP_SPEED_DOUBLE
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4306,6 +4366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1334781880}
   animator: {fileID: 867190332}
+  changer: {fileID: 0}
   DefaltSpeed: 3
   ChargeSpeed: 1.5
   DefaltAddLevel: 1
@@ -4314,7 +4375,9 @@ MonoBehaviour:
   ChargeShotEffect: {fileID: 0}
   ChargeEffect: {fileID: 0}
   ChargeMaxEffect: {fileID: 0}
+  DieEffect: {fileID: 0}
   Animbody: {fileID: 0}
+  Damageanimator: {fileID: 0}
   HP: 3
   MAXHP: 3
   ChargeCoumt: 0
@@ -4368,6 +4431,7 @@ MonoBehaviour:
   MoveInput: {x: 0, y: 0}
   MoveInputSave: {x: 0, y: 0}
   LastMoveInput: {x: 0, y: 0}
+  Die: 0
   cursorController: {fileID: 260987643}
   movetype: 2
 --- !u!114 &1334781882
@@ -56083,6 +56147,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbea74d39546ae04c85361c93c4d484e, type: 3}
+--- !u!95 &2065428190 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8404444284607935846, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
+  m_PrefabInstance: {fileID: 918086810}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2086834109
 GameObject:
   m_ObjectHideFlags: 0
