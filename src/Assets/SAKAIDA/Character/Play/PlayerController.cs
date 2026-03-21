@@ -1,13 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
-using UnityEditor.AnimatedValues;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Interactions;
 
 public class PlayerController : MonoBehaviour
 {
@@ -322,7 +317,7 @@ public class PlayerController : MonoBehaviour
             animator.Play("死亡");
             Die = true;
             AudioManager.instance.BgmSource.Stop();
-            StartCoroutine(SlowMotion(0.5f,0.2f));
+            StartCoroutine(SlowMotion(0.5f,0.1f));
             AudioManager.instance.PlaySE(audioClips[4]);
             GameObject CL_Effect = Instantiate(DieEffect, transform.position, Quaternion.identity);
             Destroy(CL_Effect,2);
