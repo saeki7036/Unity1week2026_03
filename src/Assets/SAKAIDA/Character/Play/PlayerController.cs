@@ -318,7 +318,7 @@ public class PlayerController : MonoBehaviour
         if(HP <= 0)
         {
             movetype = MoveType.NoAction;
-            //gameover.Invoke();
+            gameover.Invoke();
             animator.Play("死亡");
             Die = true;
             AudioManager.instance.BgmSource.Stop();

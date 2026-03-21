@@ -19,6 +19,8 @@ public class DamageOutPut : MonoBehaviour
 
     public static void ShowDamage(int damageValue, Transform spawnTransform)
     {
+        Score.AddScore(damageValue);
+
         GameObject damage = Instantiate(damageUIPrehub, spawnTransform.position,Quaternion.identity); 
 
         var log = damage.GetComponent<DamageLog>();
