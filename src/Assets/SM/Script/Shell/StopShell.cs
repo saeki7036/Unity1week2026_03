@@ -29,6 +29,7 @@ public class StopShell : MonoBehaviour
             if(con.Level != 0)
             {
                 StartEvent.Invoke();
+                ShotCheck = true;
                 break;
             }
         }

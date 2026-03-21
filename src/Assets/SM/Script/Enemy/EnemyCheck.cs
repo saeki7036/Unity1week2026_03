@@ -53,9 +53,12 @@ public class EnemyCheck : MonoBehaviour
 
     void NextLevelSetting()
     {
+        int level = EnemyBase.GetLevel();
         //Debug.Log(EnemyBase.GetLevel());
-        phase.PhaseStart(EnemyBase.GetLevel());
-        CurrentActCount = StartActCount + EnemyBase.GetLevel();
+        if (level > 1)
+            phase.PhaseStart(EnemyBase.GetLevel());
+
+        CurrentActCount = StartActCount + level;
 
         CurrentWaveTime = 0;
 

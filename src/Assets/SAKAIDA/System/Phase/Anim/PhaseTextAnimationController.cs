@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -14,9 +14,11 @@ public class PhaseTextAnimationController : MonoBehaviour
 
     public void PhaseStart(int nowPhase) 
     { 
-    
+        if(!this.gameObject.activeSelf)
+            this.gameObject.SetActive(true);
+
         PhaseText.text = DefaltPhaseText + nowPhase.ToString();
-        animator.Play("ŠJŽn");
+        animator.Play("é–‹å§‹");
         AudioManager.instance.PlaySE(StartClip);
     }
 }
