@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,15 +13,15 @@ public class AudioManager : MonoBehaviour
     public List<AudioPlay> audioPlays = new List<AudioPlay>();
 
     public Dictionary<AudioClip, float> lastPlayTimes = new Dictionary<AudioClip, float>();
-    public float minInterval = 0.1f; // Œø‰Ê‰¹‚ğÄ¶‚·‚éŠÔŠui•bj
+    public float minInterval = 0.1f; // åŠ¹æœéŸ³ã‚’å†ç”Ÿã™ã‚‹é–“éš”ï¼ˆç§’ï¼‰
 
     void Start()
     {
-        BgmSource = GetComponent<AudioSource>();
+        //BgmSource = GetComponent<AudioSource>();
         if (BGM != null)
         {
-            BgmSource.clip = BGM;
-            BgmSource.Play();
+            //BgmSource.clip = BGM;
+            //BgmSource.Play();
         }
 
         if (instance != null)
@@ -35,19 +35,19 @@ public class AudioManager : MonoBehaviour
     }
     public void PlaySE(AudioClip Clip)
     {
-        // Ä¶ŠÔŠuƒ`ƒFƒbƒN
+        // å†ç”Ÿé–“éš”ãƒã‚§ãƒƒã‚¯
         if (lastPlayTimes.ContainsKey(Clip))
         {
             if (Time.time - lastPlayTimes[Clip] < minInterval) return;
         }
-        // Pool ‚©‚ç AudioSource ‚ğæ“¾‚µ‚ÄÄ¶
+        // Pool ã‹ã‚‰ AudioSource ã‚’å–å¾—ã—ã¦å†ç”Ÿ
         AudioSource src = AudioPool.Instance.GetSource();
         src.GetComponent<AudioPlay>().Play(Clip);
         lastPlayTimes[Clip] = Time.time;
     }
     public void StopAllAudio()
     {
-        // ‚·‚×‚Ä‚ÌÄ¶’†‚Ì‰¹‚ğ’â~‚·‚é
+        // ã™ã¹ã¦ã®å†ç”Ÿä¸­ã®éŸ³ã‚’åœæ­¢ã™ã‚‹
         foreach (var audio in audioPlays)
         {
             audio.Stop();
