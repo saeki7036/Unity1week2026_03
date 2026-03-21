@@ -10294,15 +10294,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 7547810695186101941}
   animator: {fileID: 6099402110038900659}
-  DefaltSpeed: 4
-  ChargeSpeed: 1
+  changer: {fileID: 0}
+  DefaltSpeed: 5
+  ChargeSpeed: 1.5
   DefaltAddLevel: 1
   ChargeAddLevel: 6
   ChargeTime: 0.4
   ChargeShotEffect: {fileID: 2772205868691781627}
   ChargeEffect: {fileID: 7974589881229475702}
   ChargeMaxEffect: {fileID: 4825468587394484770}
+  DieEffect: {fileID: 0}
   Animbody: {fileID: 4702696369631461485}
+  Damageanimator: {fileID: 0}
   HP: 3
   MAXHP: 3
   ChargeCoumt: 0
@@ -10321,6 +10324,7 @@ MonoBehaviour:
   MoveInput: {x: 0, y: 0}
   MoveInputSave: {x: 0, y: 0}
   LastMoveInput: {x: 0, y: 0}
+  Die: 0
   cursorController: {fileID: 8522619851435759480}
   movetype: 2
 --- !u!50 &7547810695186101941
