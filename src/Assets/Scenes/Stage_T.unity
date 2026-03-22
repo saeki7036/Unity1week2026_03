@@ -3026,6 +3026,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5370876500069640011, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
+      propertyPath: m_Size.x
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 5370876500069640011, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
+      propertyPath: m_Size.y
+      value: 0.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 5370876500069640011, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.68
+      objectReference: {fileID: 0}
     - target: {fileID: 5630059413261762482, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -3038,6 +3050,10 @@ PrefabInstance:
       propertyPath: DieEffect
       value: 
       objectReference: {fileID: 7358643713522650685, guid: 980dfab4b69a7004f9ed8c6a34efe8c8, type: 3}
+    - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
+      propertyPath: DefaltSpeed
+      value: 5.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
       propertyPath: Damageanimator
       value: 
@@ -3053,7 +3069,7 @@ PrefabInstance:
     - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
       propertyPath: audioClips.Array.data[3]
       value: 
-      objectReference: {fileID: 8300000, guid: 289f25502a272d540aa0f80938455f4e, type: 3}
+      objectReference: {fileID: 8300000, guid: 2a6174cb55bc1954f94851c307a290f6, type: 3}
     - target: {fileID: 5899831273290167635, guid: c9af586788ad02a45b288d17ed2becb6, type: 3}
       propertyPath: audioClips.Array.data[4]
       value: 
@@ -55242,7 +55258,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 15928fbf3f899ea4e8dad0b035ea3295, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 36ad35610464ed047914f7ccaa6383a6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
