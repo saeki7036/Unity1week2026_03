@@ -9835,7 +9835,7 @@ MonoBehaviour:
   Level: 0
   BrakeShell: 0
   DefaltSpeed: 1.6
-  UP_SPEED_DOUBLE: 0.5
+  UP_SPEED_DOUBLE: 0.45
   CulcarateSpeed: 0
   HeighLevelEffect: {fileID: 3317899819414853936}
   rb: {fileID: 2366595174470507383}
