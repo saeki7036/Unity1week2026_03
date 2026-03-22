@@ -272,7 +272,7 @@ MonoBehaviour:
         m_CallState: 2
   checkFlag: 1
   StartActCount: 4
-  WaveTime: 30
+  WaveTime: 15
   SpawnRange_min: {x: -7.5, y: -7.5}
   SpawnRange_max: {x: 7.5, y: 7.5}
   addShell: {fileID: 781953821}
