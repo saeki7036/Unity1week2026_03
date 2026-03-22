@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
@@ -14,7 +15,7 @@ public class EnemyCheck : MonoBehaviour
 
     [SerializeField] int StartActCount = 4;
 
-    [SerializeField] float WaveTime = 30f;
+    [SerializeField] float WaveTime = 15f;
 
     [SerializeField] Vector2 SpawnRange_min, SpawnRange_max;
 
@@ -24,6 +25,8 @@ public class EnemyCheck : MonoBehaviour
 
     int CurrentActCount;
     float CurrentWaveTime;
+
+    float TargetWaveTime = 10f;
 
     Stack<GameObject> EnemyList;
     List<float> EnemySpawnTime;
@@ -60,6 +63,7 @@ public class EnemyCheck : MonoBehaviour
 
         CurrentActCount = StartActCount + level;
 
+        TargetWaveTime = WaveTime + Mathf.Min(level * 2,15);
         CurrentWaveTime = 0;
 
         EnemyList.Clear();
@@ -70,7 +74,7 @@ public class EnemyCheck : MonoBehaviour
         for (int i = 0; i < CurrentActCount; i++)
         {
             EnemyList.Push(Instantiate(Enemy_S, RamdomPos, Quaternion.identity));
-            EnemySpawnTime.Add(UnityEngine.Random.Range(0, WaveTime));
+            EnemySpawnTime.Add(UnityEngine.Random.Range(0, TargetWaveTime));
         }
 
         EnemySpawnTime.Sort();
@@ -83,7 +87,7 @@ public class EnemyCheck : MonoBehaviour
         if(checkFlag)
             return;
 
-        CurrentWaveTime = Mathf.Min(WaveTime, CurrentWaveTime + Time.deltaTime);
+        CurrentWaveTime = Mathf.Min(TargetWaveTime, CurrentWaveTime + Time.deltaTime);
 
         if(EnemySpawnTime.Count == 0)
         {
@@ -107,9 +111,7 @@ public class EnemyCheck : MonoBehaviour
             EnemySpawnTime.RemoveAt(0);
 
             if(EnemyList.Count > 1)
-            {
-
-                
+            {       
                 EnemyList.Peek().SetActive(true);
 
                 EnemyList.Pop();
